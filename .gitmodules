@@ -1,0 +1,2 @@
+[submodule "git@github.com:tmux-plugins/tmux-sensible.git"]
+	url = tmux/plugins/tmux-sensible
