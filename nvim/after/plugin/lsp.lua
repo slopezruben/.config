@@ -15,6 +15,8 @@ lsp_zero.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
+lsp_zero.set_sign_icons({ error = '✘', warn = '▲', hint = '⚑', info = '»' })
+
 require('mason').setup({})
 require('mason-lspconfig').setup({
   handlers = {
@@ -23,6 +25,19 @@ require('mason-lspconfig').setup({
       local lua_opts = lsp_zero.nvim_lua_ls()
       require('lspconfig').lua_ls.setup(lua_opts)
     end,
+    clangd = function()
+        require('lspconfig').clangd.setup({
+            cmd = { "clangd", "--background-index", "--query-driver=/home/ruben/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20240305/xtensa-esp-elf/bin/xtensa-esp32-elf-gcc"},
+            root_dir = require('lspconfig').util.root_pattern('build/compile_commands.json', '.git'),
+        })
+    end,
+    jdtls=function ()
+        require('lspconfig').jdtls.setup({
+            cmd= {"jdtls",
+                "--jvm-arg=" .. string.format("-javaagent:%s", vim.fn.expand "$MASON/share/jdtls/lombok.jar"),
+            }
+        })
+    end
   }
 })
 
@@ -46,5 +61,6 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({select = false}),
     ['<Tab>'] = cmp_action.luasnip_supertab(),
     ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+    ['<C-q>'] = cmp.mapping.complete(),
   }),
 })
