@@ -1,5 +1,6 @@
 local M = {}
 local keymap = vim.keymap
+
 M.general = {
     n = {
         ["<C-h>"] = {"<cmd> TmuxNavigateLeft<CR>", "window left"},
@@ -20,3 +21,6 @@ keymap.set("n", "te", ":tabedit", opts)
 keymap.set("n", "<tab>", ":tabnext<Return>", opts)
 keymap.set("n", "<S-tab>", ":tabprev<Return>", opts)
 
+--- Trouble Open/Close
+keymap.set("n", "to", ":Trouble<Return>");
+keymap.set("n", "tc", ":TroubleClose<Return>");
