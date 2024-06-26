@@ -26,3 +26,4 @@
 - [ ] nvim: redo after/plugin/trouble.lua
 - [ ] tmux: get some rrrice going
 - [ ] add: .zshrc
+- [ ] add: i3
