@@ -16,7 +16,7 @@
       - tmux_integration
       - treesitter
       - trouble
--after/plugin: Scripts that run after the plugins have been initialized.
+- after/plugin: Scripts that run after the plugins have been initialized.
     
 ## tmux
 # TODOs
