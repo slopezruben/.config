@@ -24,3 +24,7 @@ keymap.set("n", "<S-tab>", ":tabprev<Return>", opts)
 --- Trouble Open/Close
 keymap.set("n", "to", ":Trouble<Return>");
 keymap.set("n", "tc", ":TroubleClose<Return>");
+
+--- Open nav
+keymap.set("n", "<leader>pv", vim.cmd.Ex)
+
